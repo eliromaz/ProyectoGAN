@@ -2,8 +2,8 @@ from fastapi import FastAPI, Request# type: ignore
 from fastapi.responses import StreamingResponse # type: ignore
 from pydantic import BaseModel# type: ignore
 
-import os
-os.add_dll_directory("C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.8/bin")
+# import os
+# os.add_dll_directory("C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.8/bin")
 
 import warnings
 warnings.filterwarnings("ignore", message="Failed to build CUDA kernels for upfirdn2d.*", category=UserWarning)
