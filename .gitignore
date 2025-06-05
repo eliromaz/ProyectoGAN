@@ -29,12 +29,12 @@ __pycache__/
 # === Archivos de modelos ===
 *.pkl
 
-# === Entornos de desarrollo ===
+# === Entornos ===
 .env
 .env.local
 .env.*.local
 
-# === VSCode y editores ===
+# VSCode y editores
 .vscode/*
 !.vscode/extensions.json
 .idea/
@@ -45,13 +45,13 @@ __pycache__/
 *.sw?
 .DS_Store
 
-# === Archivos temporales ===
+# Archivos temporales
 *.tmp
 *.temp
 
-# === Torch (compilaciones personalizadas que genera stylegan2-ada) ===
+# Torch 
 torch_extensions/
 
-# === Docker (solo excluir volúmenes temporales si los usas) ===
+# Docker
 *.pid
 *.seed
