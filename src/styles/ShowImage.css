@@ -1,0 +1,52 @@
+/* 🌟 Caja de Imagen Generada */
+.show-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 350px;
+  height: 350px;
+  border: 2px dashed #4c4c4c;
+  border-radius: 15px;
+  background-color: #f0f0f0;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.show-image-container img {
+  max-width: 200%;
+  border-radius: 50px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* 🌟 Botón de Descargar */
+.btn-descargar {
+  background: #0b0b0b;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 14px;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-descargar:hover {
+  background: #989a9a;
+}
+
+/* Controla el tamaño de la imagen generada */
+.img-generada {
+  max-width: 100%;
+  width: 512px; /* o el tamaño que desees */
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.error_message {
+  display: flex;
+  width: 350px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}

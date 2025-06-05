@@ -1,0 +1,57 @@
+/* 🧊 Sección con apariencia metálica */
+.metallic-hero {
+  background: linear-gradient(
+    145deg,
+    #ebebeb,
+    #ffffff
+  ); /* Degradado metálico */
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), inset 1px 1px 2px #000000,
+    inset -1px -1px 2px #b0b0b0; /* Efecto biselado */
+  max-width: 800px;
+  max-height: 160px;
+  margin: 0 auto;
+  transition: all 0.3s ease-in-out;
+  display: block;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.metallic-hero:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15), inset 1px 1px 2px #ffffff,
+    inset -1px -1px 2px #b0b0b0;
+  transform: translateY(-3px);
+  max-height: 800px;
+  transition: all 0.5s ease-in-out;
+}
+
+.metallic-hero h1 {
+  color: #2c2c2c;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-shadow: 0 1px 0 #fff;
+  font-family: "Poppins";
+}
+
+.metallic-hero p {
+  color: #555;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  text-shadow: 0 1px 0 #fff;
+}
+
+/*Texto de instruciones oculto*/
+.hover-text-ins {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  left: 0;
+  color: black;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
+.metallic-hero:hover .hover-text-ins {
+  visibility: visible;
+  opacity: 1;
+}

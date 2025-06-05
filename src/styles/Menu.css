@@ -1,0 +1,33 @@
+.fondo-menu {
+  background-color: none;
+}
+
+/*Estilo de los boton */
+.btn-generar {
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 16px;
+  transition: all 0.3s ease-in-out;
+  border-radius: 5px;
+  border: none;
+  margin-top: 35px;
+  padding: 10px 100px 10px 100px;
+}
+
+.btn-generar:hover {
+  background-color: #989a9a;
+  color: #000000;
+}
+
+.ul-dropdown-menu {
+  width: 400px;
+  columns: 2;
+  column-gap: 1rem; /* Espacio entre columnas */
+  background: linear-gradient(90deg, #c3c3c3, #ffffff);
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+.h3-menu {
+  font-family: "Poppins";
+}

@@ -1,0 +1,16 @@
+services:
+  frontend:
+    build: ./react-app
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+  backend:
+    build: ./react-app/backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./react-app/backend:/app
+    environment:
+      - PYTHONUNBUFFERED=1
