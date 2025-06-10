@@ -18,7 +18,7 @@ from fastapi.middleware.cors import CORSMiddleware# type: ignore
 # Cargar el modelo
  #if torch.cuda.is_available() else 'cpu'
 device = torch.device('cuda')  # Usa 'cuda' si tienes soporte
-with dnnlib.util.open_url("network-snapshot-000040.pkl") as f:
+with dnnlib.util.open_url("network-snapshot-000800.pkl") as f:
     G = legacy.load_network_pkl(f)["G_ema"].to(device) # type: ignore
 
 app = FastAPI()
@@ -37,14 +37,23 @@ class InputData(BaseModel):
 
 def ordenarCaracteristicas(data: InputData):
     arregloInicial = data.arreglo_binario
-    arregloPosiciones = [4, 8, 9, 11, 17, 5, 28, 30, 32, 33, 12, 6, 7, 22, 1, 3, 3, 23, 24, 27, 19, 26, 25, 31, 13, 14, 15, 36, 39, 20]
-    arregloFinal = [1] * 40  # Inicializa el arreglo con ceros
+    arregloPosiciones = [4, 8, 9, 11, 17, 5, 28, 30, 32, 33,
+                         12, 6, 7, 22, 1, 3, 0,  23, 24, 27,  
+                         19, 26, 25, 31, 13, 14, 15, 36, 39, 20]
 
-    for i, pos in enumerate(arregloPosiciones):
-        if i < len(arregloInicial):  # Asegura que no haya un índice fuera de rango
-            arregloFinal[pos] = arregloInicial[i]
+    arregloFinal = [0, 0, 1, 1, 0, 0, 0, 0, 0, 0,
+                    0, 1, 0, 0, 0, 0, 0, 0, 0, 1,
+                    0, 0, 0, 0, 0, 1, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
+    for i in range(len(arregloPosiciones)):
+        pos = arregloPosiciones[i]
+        if arregloInicial[i] == 1:
+            arregloFinal[pos] = 1
+
+    print(arregloInicial)
     print(arregloFinal)
+    print("Hola puta")
     return arregloFinal
 
 @app.post("/generar-imagen/")
