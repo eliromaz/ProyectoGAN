@@ -27,7 +27,6 @@ __pycache__/
 *.so
 
 # === Archivos de modelos ===
-*.pkl
 
 # === Entornos ===
 .env

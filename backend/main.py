@@ -14,6 +14,7 @@ import legacy
 import io
 from torchvision.utils import save_image# type: ignore
 from fastapi.middleware.cors import CORSMiddleware# type: ignore
+from torchvision.transforms.functional import to_pil_image
 
 # Cargar el modelo
  #if torch.cuda.is_available() else 'cpu'
@@ -50,27 +51,33 @@ def ordenarCaracteristicas(data: InputData):
         pos = arregloPosiciones[i]
         if arregloInicial[i] == 1:
             arregloFinal[pos] = 1
-
-    print(arregloInicial)
-    print(arregloFinal)
-    print("Hola puta")
     return arregloFinal
 
 @app.post("/generar-imagen/")
 def generar_imagen(data: InputData):
-    # raise Exception("Simulación de error interno")
-    # Llamamos a ordenarCaracteristicas con los datos que llegaron en la solicitud
+    # Procesar entrada y generar vector condicional
     arregloBinario = ordenarCaracteristicas(data)
-
     class_vector = torch.tensor(arregloBinario, dtype=torch.float32, device=device).unsqueeze(0)
+
+    # Generar latente z y generar imagen
     seed = np.random.randint(0, 99999)
     z = torch.from_numpy(np.random.RandomState(seed).randn(1, G.z_dim)).to(device)
-
     img = G(z, class_vector, truncation_psi=0.8, noise_mode='const')
-    img = (img + 1) * 0.5  # Normalizar de [-1,1] a [0,1]
+    img = (img + 1) * 0.5  # De [-1,1] a [0,1]
+
+    # Convertir a imagen PIL y guardar en buffer como JPG
+    img_pil = to_pil_image(img.squeeze(0).cpu())
+    img_pil = img_pil.convert("RGB")  # Asegurar modo RGB (sin canal alfa)
 
     buffer = io.BytesIO()
-    save_image(img, buffer, format="PNG")
+    img_pil.save(buffer, format="JPEG")
     buffer.seek(0)
 
-    return StreamingResponse(buffer, media_type="image/png")
+    # Forzar nombre del archivo al descargar
+    headers = {
+        "Content-Disposition": 'attachment; filename="retrato.jpg"'
+    }
+
+    return StreamingResponse(buffer, media_type="image/jpeg", headers=headers)
+
+

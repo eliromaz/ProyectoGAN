@@ -1,34 +1,51 @@
-/*Fondo de la barra principal*/
+/* Fondo de la barra principal */
 .bar {
   background: #181818;
-  padding: 5px 150px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 10);
+  padding: 5px 5%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
+/* Contenedor flexible del nav */
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap; /* no deja que el botón salte abajo */
+}
+
+/* Estilo del logo */
 .logo-3d {
   font-family: "Poppins", sans-serif;
-
   color: #ffffff;
-  position: relative;
   text-shadow: 0px 0px 10px #ffffff;
   transition: all 0.3s ease;
-
-  /* Tamaño de fuente responsivo */
-  font-size: clamp(1.2rem, 5vw, 2rem);
+  font-size: clamp(1.8rem, 5vw, 2.5rem); /* Más grande pero balanceado */
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
-.logo-3d:hover {
-  text-shadow: 0px 0px 15px #ffffff;
-}
-
-/*Boton nosotros*/
+/* Botón "Nosotros" */
 .bar .btn-outline-success {
   color: white;
   border-color: white;
   transition: all 0.3s ease-in-out;
+  padding: 5px 12px;
+  font-size: 0.9rem;
 }
 
-.btn-outline-success:hover {
+.bar .btn-outline-success:hover {
   background: white;
   color: #343a40;
+}
+
+/* Ajuste para pantallas pequeñas */
+@media (max-width: 576px) {
+  .bar .btn-outline-success {
+    font-size: 0.85rem;
+    padding: 4px 10px;
+  }
+}
+
+.text-justify {
+  text-align: justify;
 }
